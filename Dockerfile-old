@@ -1,0 +1,19 @@
+# Base Image
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Instalar pnpm globalmente
+RUN apk add --no-cache curl && \
+    curl -f https://get.pnpm.io/v6.14.js | node - add --global pnpm
+
+# Copiar pnpm-lock.yaml e package.json para o diretório de trabalho
+COPY . .
+
+# Instalar apenas as dependências de produção
+RUN pnpm install --frozen-lockfile --prod
+
+EXPOSE 3000
+
+# Iniciar o aplicativo
+CMD [ "node", "./src/server.ts" ]

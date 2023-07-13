@@ -1,0 +1,9 @@
+__tests__/
+.nyc_output/
+.vscode/
+coverate/
+logs/
+node_modules/
+rpm/
+artifacts/
+dist/
