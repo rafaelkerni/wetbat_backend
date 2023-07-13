@@ -27,6 +27,6 @@ RUN yarn install --production --frozen-lockfile
 COPY --from=build /app/dist ./dist
 COPY --from=base /app/knexfile.ts ./knexfile.js 
 
-EXPOSE 3000
+EXPOSE 3333
 
 CMD ["node", "dist/server.js"]
